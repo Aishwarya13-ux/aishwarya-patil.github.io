@@ -1,0 +1,296 @@
+/* --- Global Styles & Variables --- */
+:root {
+    --primary-color: #8A2BE2; /* Purple */
+    --secondary-color: #4F46E5; /* Indigo */
+    --accent-color-light: #c084fc; /* Lighter Purple */
+    --accent-color-bright: #f0abfc; /* Bright Pink/Purple */
+    --background-dark: #03001C;
+    --background-medium: #111827;
+    --background-light: #1F2937;
+    --text-light: #F3F4F6;
+    --text-medium: #D1D5DB;
+    --text-dark: #9CA3AF;
+    --card-bg: #1F2937;
+    --border-color: #374151;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    background-color: var(--background-dark);
+    color: var(--text-light);
+    line-height: 1.6;
+    font-family: 'Poppins', sans-serif;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* --- tsParticles Container Styling --- */
+#tsparticles { position: fixed; width: 100%; height: 100%; top: 0; left: 0; z-index: -1; }
+
+.container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; position: relative; z-index: 1; }
+h1, h2, h3, h4 { color: var(--text-light); margin-bottom: 0.8rem; }
+h1 { font-size: 3rem; line-height: 1.2; }
+h2 { font-size: 2.2rem; text-align: center; margin-bottom: 1rem; }
+h3 { font-size: 1.4rem; }
+h4 { font-size: 1.1rem; color: var(--text-medium); }
+p { color: var(--text-medium); margin-bottom: 1rem; }
+a { color: var(--primary-color); text-decoration: none; transition: color 0.3s ease; }
+a:hover { color: var(--secondary-color); }
+main { position: relative; z-index: 1; }
+section { padding: 6rem 0; position: relative; z-index: 1; }
+.section-subtitle { text-align: center; max-width: 600px; margin: 0 auto 3rem auto; color: var(--text-medium); }
+
+/* --- Buttons --- */
+.btn { display: inline-block; padding: 0.8rem 1.8rem; border-radius: 50px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; border: none; font-size: 1rem; position: relative; z-index: 2; }
+.btn-primary { background-color: var(--primary-color); color: #fff; }
+.btn-primary:hover { background-color: var(--secondary-color); color: #fff; transform: translateY(-2px); box-shadow: 0 4px 15px rgba(138, 43, 226, 0.4); }
+.btn-outline { background-color: transparent; border: 2px solid var(--primary-color); color: var(--primary-color); }
+.btn-outline:hover { background-color: var(--primary-color); color: #fff; }
+
+/* --- Header/Navigation --- */
+header { background-color: rgba(3, 0, 28, 0.8); backdrop-filter: blur(10px); position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; padding: 1rem 0; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); }
+header .container { display: flex; justify-content: space-between; align-items: center; }
+.logo { font-size: 1.5rem; font-weight: 700; color: var(--primary-color); font-family: monospace; }
+.logo:hover { color: var(--accent-color-light); }
+nav ul { list-style: none; display: flex; }
+nav ul li { margin-left: 2rem; }
+nav ul li a { color: var(--text-medium); font-weight: 500; padding-bottom: 5px; position: relative; }
+nav ul li a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background-color: var(--primary-color); transition: width 0.3s ease; }
+nav ul li a:hover, nav ul li a.active { color: var(--text-light); }
+nav ul li a:hover::after { width: 100%; }
+
+/* --- Hero Section --- ADJUSTED LAYOUT AND SPACING */
+.hero-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    background: none;
+    padding-top: 100px; /* Increased top padding */
+    padding-bottom: 60px; /* Added bottom padding */
+    position: relative;
+    z-index: 1;
+    overflow: hidden; /* Prevent content spill */
+}
+.hero-content {
+    display: flex;
+    justify-content: space-between; /* Keep space between */
+    align-items: center;
+    gap: 2rem; /* Keep moderate gap */
+    position: relative;
+    z-index: 1;
+    flex-wrap: nowrap; /* Prevent wrapping on medium screens */
+}
+.hero-text {
+    flex: 1 1 55%; /* Allow growing/shrinking, target 55% */
+    min-width: 300px; /* Prevent text block from getting too small */
+    padding-right: 1rem; /* Add some space before image */
+}
+.hero-image {
+    flex: 0 0 auto; /* Don't grow or shrink, use its content size or explicit width */
+    width: 350px; /* Set explicit width */
+    height: 350px; /* Set explicit height */
+    text-align: center; /* Center image if container is slightly larger */
+    position: relative;
+    z-index: 2;
+}
+.hero-image img {
+    display: block; /* Remove potential bottom space */
+    max-width: 100%;
+    width: 100%; /* Make image fill its container */
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid var(--primary-color);
+    box-shadow: 0 0 30px rgba(138, 43, 226, 0.5);
+}
+
+/* Hero Text Specific Spacing */
+.hero-text h1 { margin-bottom: 0.6rem; font-weight: 700; line-height: 1.15; } /* Slightly tighter line-height */
+.hero-text h2 { font-size: 1.8rem; margin-bottom: 1.2rem; text-align: left; color: var(--text-medium); min-height: 1.5em; }
+.hero-text h2 .typing-text { color: var(--primary-color); font-weight: 600; border-right: 3px solid var(--primary-color); animation: blink 0.7s infinite; padding-right: 5px; display: inline-block; vertical-align: bottom; }
+.hero-text p { margin-bottom: 2rem; /* Keep slightly larger gap before button */ font-size: 1.1rem; max-width: 500px; }
+
+@keyframes blink { 0%, 100% { border-color: transparent; } 50% { border-color: var(--primary-color); } }
+
+/* --- Card Styles (Skills, Experience, Projects, Education) --- */
+.skill-category,
+.timeline-content,
+.project-card,
+.education-item {
+    background-color: rgba(31, 41, 55, 0.85);
+    backdrop-filter: blur(5px);
+    padding: 2rem; border-radius: 10px; border: 1px solid var(--border-color);
+    position: relative; z-index: 2;
+}
+.skill-category:hover,
+.timeline-content:hover, /* Might not want hover on timeline */
+.project-card:hover,
+.education-item:hover {
+    transform: translateY(-5px); box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* --- Skills Section --- */
+.skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; position: relative; z-index: 1; }
+.skill-category h3 { margin-bottom: 1.5rem; border-bottom: 2px solid var(--primary-color); display: inline-block; padding-bottom: 0.3rem; }
+.skill-list { display: flex; flex-wrap: wrap; gap: 0.8rem; }
+.skill-list span { background-color: var(--background-medium); color: var(--text-medium); padding: 0.5rem 1rem; border-radius: 5px; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 0.5rem; border: 1px solid var(--border-color); }
+.skill-list span i { color: var(--primary-color); }
+
+/* --- Experience Section (Timeline) --- */
+.timeline { position: relative; max-width: 800px; margin: 0 auto; z-index: 1; }
+.timeline::after { content: ''; position: absolute; width: 3px; background-color: var(--border-color); top: 0; bottom: 0; left: 50%; margin-left: -1.5px; z-index: 1; }
+.timeline-item { padding: 10px 40px; position: relative; background-color: transparent; width: 50%; z-index: 2; }
+.timeline-item:nth-child(odd) { left: 0; padding-right: 60px; }
+.timeline-item:nth-child(even) { left: 50%; padding-left: 60px; }
+.timeline-dot { content: ''; position: absolute; width: 16px; height: 16px; background-color: var(--background-dark); border: 3px solid var(--primary-color); top: 28px; border-radius: 50%; z-index: 3; }
+.timeline-item:nth-child(odd) .timeline-dot { right: 22px; }
+.timeline-item:nth-child(even) .timeline-dot { left: 22px; }
+.timeline-date { position: absolute; top: 28px; font-size: 0.9rem; color: var(--text-dark); font-weight: 600; white-space: nowrap; z-index: 2; }
+.timeline-item:nth-child(odd) .timeline-date { right: 100%; margin-right: 15px; text-align: right; }
+.timeline-item:nth-child(even) .timeline-date { left: 100%; margin-left: 15px; }
+.timeline-content h3 { margin-top: 0; color: var(--primary-color); }
+.timeline-content h4 { color: var(--text-light); margin-bottom: 0.5rem; font-weight: 500; }
+.company-logo { width: 40px; height: 40px; border-radius: 50%; object-fit: contain; margin-bottom: 0.5rem; background-color: white; padding: 2px; }
+.skills-tags { margin-top: 1rem; font-size: 0.85rem; color: var(--text-dark); }
+
+/* --- Projects Section --- */
+.project-filters { display: flex; justify-content: center; gap: 1rem; margin-bottom: 3rem; position: relative; z-index: 2; }
+.filter-btn { background-color: transparent; color: var(--text-medium); border: 1px solid var(--border-color); padding: 0.5rem 1.5rem; border-radius: 20px; cursor: pointer; transition: all 0.3s ease; position: relative; z-index: 2; }
+.filter-btn:hover, .filter-btn.active { background-color: var(--primary-color); color: white; border-color: var(--primary-color); }
+.projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; position: relative; z-index: 1; }
+.project-card { border-radius: 10px; overflow: hidden; display: flex; flex-direction: column; transition: opacity 0.3s ease, transform 0.3s ease; will-change: opacity, transform; }
+.project-card.hide { opacity: 0; transform: scale(0.95); pointer-events: none; }
+.project-card:hover { transform: translateY(-5px) scale(1.02); box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3); }
+.project-card img { width: 100%; height: 200px; object-fit: cover; display: block; }
+.project-info { padding: 1.5rem; flex-grow: 1; display: flex; flex-direction: column; }
+.project-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem; }
+.project-tags span { background-color: var(--background-medium); color: var(--primary-color); padding: 0.3rem 0.7rem; border-radius: 15px; font-size: 0.75rem; font-weight: 500; border: 1px solid var(--primary-color); }
+.project-card h3 { margin-bottom: 0.5rem; }
+.project-date { font-size: 0.85rem; color: var(--text-dark); margin-bottom: 0.8rem; }
+.project-info p:last-of-type { margin-bottom: 0; flex-grow: 1; }
+
+/* --- Education Section --- */
+.education-item { padding: 1.5rem; margin-bottom: 1.5rem; max-width: 800px; margin-left: auto; margin-right: auto; }
+.education-item h3 { color: var(--primary-color); }
+.education-item h4 { margin-bottom: 0.3rem;}
+.education-item p { margin-bottom: 0.5rem;}
+
+/* --- Footer --- */
+footer { background-color: var(--background-medium); text-align: center; padding: 2rem 0; margin-top: 4rem; border-top: 1px solid var(--border-color); position: relative; z-index: 5; }
+footer p { color: var(--text-dark); font-size: 0.9rem; margin-bottom: 0; }
+
+/* --- Responsiveness --- ADJUSTED HERO BREAKPOINT */
+@media (max-width: 992px) {
+    /* Keep general container padding */
+    .container { padding: 0 1.5rem; }
+    /* Adjust hero text size slightly */
+    h1 { font-size: 2.8rem; }
+    .hero-text h2 { font-size: 1.7rem; }
+     /* Keep hero content side-by-side a bit longer if possible */
+    .hero-content { gap: 1.5rem; }
+    .hero-text { flex-basis: 50%; padding-right: 0.5rem;} /* Allow slightly less space */
+    .hero-image { width: 300px; height: 300px; } /* Reduce image size */
+}
+
+@media (max-width: 768px) { /* Stack hero content only on smaller screens */
+    header .container { flex-direction: column; }
+    nav ul { margin-top: 1rem; flex-wrap: wrap; justify-content: center; }
+    nav ul li { margin: 0.5rem; }
+    .btn-outline { margin-top: 1rem; }
+    section { padding: 4rem 0; }
+
+    /* === Stack Hero Content === */
+    .hero-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    .hero-text {
+        flex-basis: 100%;
+        order: 2; /* Text below image */
+        padding-right: 0; /* Remove padding when stacked */
+        max-width: 550px; /* Limit width when centered */
+        margin: 0 auto; /* Center text block */
+    }
+    .hero-text h2 { text-align: center; } /* Center sub-heading */
+    .hero-text p { margin-left: auto; margin-right: auto; }
+    .hero-image {
+        flex-basis: 100%;
+        order: 1; /* Image above text */
+        margin: 0 auto 2rem auto; /* Center image and add bottom margin */
+        width: 280px; /* Adjust size for smaller screens */
+        height: 280px;
+    }
+    /* ========================= */
+
+    /* Timeline adjustments */
+    .timeline::after { left: 31px; }
+    .timeline-item { width: 100%; padding-left: 70px; padding-right: 25px; margin-bottom: 30px; }
+    .timeline-item:nth-child(odd), .timeline-item:nth-child(even) { left: 0; }
+    .timeline-dot { left: 23px; }
+    .timeline-item:nth-child(odd) .timeline-dot, .timeline-item:nth-child(even) .timeline-dot { left: 23px; }
+    .timeline-date { position: relative; left: auto !important; right: auto !important; margin: 0 0 10px 0 !important; top: auto; text-align: left !important; display: block; }
+
+    .projects-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 576px) {
+    h1 { font-size: 2.2rem; }
+    h2 { font-size: 1.6rem; }
+    .hero-text h2 { font-size: 1.5rem; }
+    .hero-image { width: 220px; height: 220px; }
+    .btn { padding: 0.6rem 1.2rem; font-size: 0.9rem;}
+    .skills-grid { grid-template-columns: 1fr; }
+    .skill-category { padding: 1.5rem; }
+    .project-filters { flex-wrap: wrap; gap: 0.5rem;}
+    .filter-btn { padding: 0.4rem 1rem; font-size: 0.9rem; }
+    .container { padding: 0 1rem; } /* Reduce padding further */
+    .skill-category, .timeline-content, .project-card, .education-item { padding: 1.5rem; } /* Reduce card padding */
+}
+/* --- Add or Modify these styles for the Primary Button --- */
+
+.btn-primary {
+    /* Keep existing gradient as the base */
+    background: linear-gradient(to right, #a855f7, #e040fb);
+    color: #fff;
+    box-shadow: 0 4px 15px rgba(168, 85, 247, 0.4);
+
+    /* Make the background gradient image larger than the button */
+    background-size: 200% 100%; /* Increase width */
+
+    /* Apply the animation */
+    animation: lightningGradient 2.5s linear infinite; /* Adjust speed (2.5s) as needed */
+
+    /* Ensure other essential button styles are present */
+    display: inline-block;
+    padding: 0.8rem 1.8rem;
+    border-radius: 50px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Keep hover transitions */
+    border: none;
+    font-size: 1rem;
+    position: relative;
+    z-index: 2;
+}
+
+/* Keep the existing hover effect */
+.btn-primary:hover {
+    /* The background animation continues, just enhance shadow/transform */
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(168, 85, 247, 0.6); /* Maybe slightly stronger shadow on hover */
+}
+
+
+/* --- Add these Keyframes anywhere in your <style> block --- */
+@keyframes lightningGradient {
+    0% {
+        background-position: 0% 50%; /* Start position */
+    }
+    50% {
+        background-position: 100% 50%; /* Move to the right */
+    }
+    100% {
+        background-position: 0% 50%; /* Return to start for smooth loop */
+    }
+}

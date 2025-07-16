@@ -1,0 +1,26 @@
+/* Make the image responsive */
+.hero-image img {
+  width: 100%;
+  max-width: 250px;
+  border-radius: 50%;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Blinking effect on hover */
+.hero-image img:hover {
+  animation: blink 0.7s ease-in-out infinite alternate;
+}
+
+/* Blink keyframes */
+@keyframes blink {
+  0% { opacity: 1; }
+  100% { opacity: 0.3; }
+}
+
+/* Responsive adjustments (optional) */
+@media (max-width: 600px) {
+  .hero-image img {
+    max-width: 180px;
+  }
+}
