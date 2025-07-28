@@ -232,6 +232,9 @@ footer p { color: var(--text-dark); font-size: 0.9rem; margin-bottom: 0; }
     .timeline-date { position: relative; left: auto !important; right: auto !important; margin: 0 0 10px 0 !important; top: auto; text-align: left !important; display: block; }
 
     .projects-grid { grid-template-columns: 1fr; }
+    .contact-wrapper {
+        flex-direction: column;
+    }
 }
 
 @media (max-width: 576px) {
@@ -293,7 +296,9 @@ footer p { color: var(--text-dark); font-size: 0.9rem; margin-bottom: 0; }
     100% {
         background-position: 0% 50%; /* Return to start for smooth loop */
     }
+}
 
+/* --- Contact Section --- */
 .contact-section {
   padding: 60px 20px;
   background-color: #0d0d0d;
@@ -377,6 +382,4 @@ footer p { color: var(--text-dark); font-size: 0.9rem; margin-bottom: 0; }
 
 .contact-form button:hover {
   background-color: #9333ea;
-}
-
 }
