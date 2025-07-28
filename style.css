@@ -293,4 +293,90 @@ footer p { color: var(--text-dark); font-size: 0.9rem; margin-bottom: 0; }
     100% {
         background-position: 0% 50%; /* Return to start for smooth loop */
     }
+
+.contact-section {
+  padding: 60px 20px;
+  background-color: #0d0d0d;
+  color: white;
+  font-family: 'Poppins', sans-serif;
+}
+
+.contact-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.contact-info,
+.contact-form {
+  flex: 1 1 45%;
+  background-color: #161616;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(100, 100, 100, 0.1);
+}
+
+.contact-info h2,
+.contact-form h2 {
+  margin-bottom: 15px;
+}
+
+.contact-info p {
+  margin: 8px 0;
+  line-height: 1.6;
+}
+
+.download-resume {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 10px 20px;
+  background: transparent;
+  border: 1.5px solid #a855f7;
+  border-radius: 8px;
+  color: #a855f7;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+.download-resume:hover {
+  background-color: #a855f7;
+  color: white;
+}
+
+.contact-form form {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 10px;
+  margin-bottom: 12px;
+  border-radius: 6px;
+  border: none;
+  background-color: #1e1e1e;
+  color: white;
+}
+
+.contact-form textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.contact-form button {
+  background-color: #a855f7;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.contact-form button:hover {
+  background-color: #9333ea;
+}
+
 }
