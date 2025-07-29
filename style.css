@@ -113,8 +113,9 @@ nav ul li a:hover::after { width: 100%; }
 
 @keyframes blink { 0%, 100% { border-color: transparent; } 50% { border-color: var(--primary-color); } }
 
-/* --- Card Styles (Skills, Projects, Education) --- */
+/* --- Card Styles (Skills, Experience, Projects, Education) --- */
 .skill-category,
+.timeline-content,
 .project-card,
 .education-item {
     background-color: rgba(31, 41, 55, 0.85);
@@ -123,6 +124,7 @@ nav ul li a:hover::after { width: 100%; }
     position: relative; z-index: 2;
 }
 .skill-category:hover,
+.timeline-content:hover, /* Might not want hover on timeline */
 .project-card:hover,
 .education-item:hover {
     transform: translateY(-5px); box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
@@ -135,86 +137,22 @@ nav ul li a:hover::after { width: 100%; }
 .skill-list span { background-color: var(--background-medium); color: var(--text-medium); padding: 0.5rem 1rem; border-radius: 5px; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 0.5rem; border: 1px solid var(--border-color); }
 .skill-list span i { color: var(--primary-color); }
 
-/* --- REPLACED EXPERIENCE SECTION STYLES --- */
-.experience-section {
-    position: relative;
-    z-index: 1;
-}
-
-.experience-container {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    max-width: 850px;
-    margin: 0 auto;
-}
-
-.experience-card {
-    background-color: var(--card-bg);
-    border: 1px solid var(--border-color);
-    border-radius: 12px;
-    padding: 1.5rem 2rem;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.experience-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-}
-
-.experience-header {
-    display: flex;
-    align-items: flex-start;
-    gap: 1.5rem;
-    margin-bottom: 1rem;
-    flex-wrap: wrap;
-}
-
-.experience-logo {
-    width: 50px;
-    height: 50px;
-    border-radius: 8px;
-    object-fit: contain;
-    background-color: #ffffff;
-    padding: 4px;
-    flex-shrink: 0;
-}
-
-.experience-title {
-    flex-grow: 1;
-}
-
-.experience-title h3 {
-    margin: 0;
-    color: var(--primary-color);
-    font-size: 1.3rem;
-}
-
-.experience-title h4 {
-    margin: 0;
-    color: var(--text-light);
-    font-weight: 500;
-    font-size: 1.1rem;
-}
-
-.experience-date {
-    color: var(--text-dark);
-    font-weight: 500;
-    font-size: 0.95rem;
-    flex-shrink: 0;
-    padding-top: 4px;
-}
-
-.experience-body p {
-    color: var(--text-medium);
-    margin-bottom: 1rem;
-}
-
-.experience-body .skills-tags {
-    margin-top: 1rem;
-    font-size: 0.9rem;
-    color: var(--text-dark);
-}
+/* --- Experience Section (Timeline) --- */
+.timeline { position: relative; max-width: 800px; margin: 0 auto; z-index: 1; }
+.timeline::after { content: ''; position: absolute; width: 3px; background-color: var(--border-color); top: 0; bottom: 0; left: 50%; margin-left: -1.5px; z-index: 1; }
+.timeline-item { padding: 10px 40px; position: relative; background-color: transparent; width: 50%; z-index: 2; }
+.timeline-item:nth-child(odd) { left: 0; padding-right: 60px; }
+.timeline-item:nth-child(even) { left: 50%; padding-left: 60px; }
+.timeline-dot { content: ''; position: absolute; width: 16px; height: 16px; background-color: var(--background-dark); border: 3px solid var(--primary-color); top: 28px; border-radius: 50%; z-index: 3; }
+.timeline-item:nth-child(odd) .timeline-dot { right: 22px; }
+.timeline-item:nth-child(even) .timeline-dot { left: 22px; }
+.timeline-date { position: absolute; top: 28px; font-size: 0.9rem; color: var(--text-dark); font-weight: 600; white-space: nowrap; z-index: 2; }
+.timeline-item:nth-child(odd) .timeline-date { right: 100%; margin-right: 15px; text-align: right; }
+.timeline-item:nth-child(even) .timeline-date { left: 100%; margin-left: 15px; }
+.timeline-content h3 { margin-top: 0; color: var(--primary-color); }
+.timeline-content h4 { color: var(--text-light); margin-bottom: 0.5rem; font-weight: 500; }
+.company-logo { width: 40px; height: 40px; border-radius: 50%; object-fit: contain; margin-bottom: 0.5rem; background-color: white; padding: 2px; }
+.skills-tags { margin-top: 1rem; font-size: 0.85rem; color: var(--text-dark); }
 
 /* --- Projects Section --- */
 .project-filters { display: flex; justify-content: center; gap: 1rem; margin-bottom: 3rem; position: relative; z-index: 2; }
@@ -238,124 +176,61 @@ nav ul li a:hover::after { width: 100%; }
 .education-item h4 { margin-bottom: 0.3rem;}
 .education-item p { margin-bottom: 0.5rem;}
 
-/* --- Contact Section --- */
-.contact-section {
-  padding: 60px 20px;
-  background-color: transparent;
-  color: white;
-  font-family: 'Poppins', sans-serif;
-}
-.contact-wrapper {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 40px;
-}
-.contact-info,
-.contact-form {
-  flex: 1 1 45%;
-  background-color: transparent; 
-  padding: 30px;
-  border-radius: 12px;
-  border: 2px solid var(--primary-color); 
-  animation: blink-border 2.5s linear infinite; 
-}
-.contact-info h2,
-.contact-form h2 {
-  margin-bottom: 15px;
-}
-.contact-info p {
-  margin: 8px 0;
-  line-height: 1.6;
-}
-.download-resume {
-  display: inline-block;
-  margin-top: 15px;
-  padding: 10px 20px;
-  background: transparent;
-  border: 1.5px solid #a855f7;
-  border-radius: 8px;
-  color: #a855f7;
-  text-decoration: none;
-  transition: 0.3s ease;
-}
-.download-resume:hover {
-  background-color: #a855f7;
-  color: white;
-}
-.contact-form form {
-  display: flex;
-  flex-direction: column;
-}
-.contact-form input,
-.contact-form textarea {
-  padding: 10px;
-  margin-bottom: 12px;
-  border-radius: 6px;
-  border: none;
-  background-color: #1e1e1e;
-  color: white;
-}
-.contact-form textarea {
-  min-height: 120px;
-  resize: vertical;
-}
-.contact-form button {
-  background-color: #a855f7;
-  color: white;
-  padding: 10px;
-  border: none;
-  border-radius: 6px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: 0.3s;
-}
-.contact-form button:hover {
-  background-color: #9333ea;
-}
-
 /* --- Footer --- */
 footer { background-color: var(--background-medium); text-align: center; padding: 2rem 0; margin-top: 4rem; border-top: 1px solid var(--border-color); position: relative; z-index: 5; }
 footer p { color: var(--text-dark); font-size: 0.9rem; margin-bottom: 0; }
 
 /* --- Responsiveness --- ADJUSTED HERO BREAKPOINT */
 @media (max-width: 992px) {
+    /* Keep general container padding */
     .container { padding: 0 1.5rem; }
+    /* Adjust hero text size slightly */
     h1 { font-size: 2.8rem; }
     .hero-text h2 { font-size: 1.7rem; }
+     /* Keep hero content side-by-side a bit longer if possible */
     .hero-content { gap: 1.5rem; }
-    .hero-text { flex-basis: 50%; padding-right: 0.5rem;}
-    .hero-image { width: 300px; height: 300px; }
+    .hero-text { flex-basis: 50%; padding-right: 0.5rem;} /* Allow slightly less space */
+    .hero-image { width: 300px; height: 300px; } /* Reduce image size */
 }
 
-@media (max-width: 768px) {
+@media (max-width: 768px) { /* Stack hero content only on smaller screens */
     header .container { flex-direction: column; }
     nav ul { margin-top: 1rem; flex-wrap: wrap; justify-content: center; }
     nav ul li { margin: 0.5rem; }
     .btn-outline { margin-top: 1rem; }
     section { padding: 4rem 0; }
 
+    /* === Stack Hero Content === */
     .hero-content {
         flex-direction: column;
         text-align: center;
     }
     .hero-text {
         flex-basis: 100%;
-        order: 2;
-        padding-right: 0;
-        max-width: 550px;
-        margin: 0 auto;
+        order: 2; /* Text below image */
+        padding-right: 0; /* Remove padding when stacked */
+        max-width: 550px; /* Limit width when centered */
+        margin: 0 auto; /* Center text block */
     }
-    .hero-text h2 { text-align: center; }
+    .hero-text h2 { text-align: center; } /* Center sub-heading */
     .hero-text p { margin-left: auto; margin-right: auto; }
     .hero-image {
         flex-basis: 100%;
-        order: 1;
-        margin: 0 auto 2rem auto;
-        width: 280px;
+        order: 1; /* Image above text */
+        margin: 0 auto 2rem auto; /* Center image and add bottom margin */
+        width: 280px; /* Adjust size for smaller screens */
         height: 280px;
     }
-    
+    /* ========================= */
+
+    /* Timeline adjustments */
+    .timeline::after { left: 31px; }
+    .timeline-item { width: 100%; padding-left: 70px; padding-right: 25px; margin-bottom: 30px; }
+    .timeline-item:nth-child(odd), .timeline-item:nth-child(even) { left: 0; }
+    .timeline-dot { left: 23px; }
+    .timeline-item:nth-child(odd) .timeline-dot, .timeline-item:nth-child(even) .timeline-dot { left: 23px; }
+    .timeline-date { position: relative; left: auto !important; right: auto !important; margin: 0 0 10px 0 !important; top: auto; text-align: left !important; display: block; }
+
     .projects-grid { grid-template-columns: 1fr; }
     .contact-wrapper {
         flex-direction: column;
@@ -372,59 +247,142 @@ footer p { color: var(--text-dark); font-size: 0.9rem; margin-bottom: 0; }
     .skill-category { padding: 1.5rem; }
     .project-filters { flex-wrap: wrap; gap: 0.5rem;}
     .filter-btn { padding: 0.4rem 1rem; font-size: 0.9rem; }
-    .container { padding: 0 1rem; }
-    .skill-category, .project-card, .education-item { padding: 1.5rem; }
-
-    /* Responsive adjustments for the new experience section */
-    .experience-card {
-        padding: 1.5rem;
-    }
-    .experience-header {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        gap: 1rem;
-    }
-    .experience-date {
-        padding-top: 0;
-        margin-top: -0.5rem;
-        background-color: var(--background-medium);
-        padding: 0.2rem 0.6rem;
-        border-radius: 15px;
-    }
-    .experience-body {
-        text-align: center;
-    }
+    .container { padding: 0 1rem; } /* Reduce padding further */
+    .skill-category, .timeline-content, .project-card, .education-item { padding: 1.5rem; } /* Reduce card padding */
 }
+/* --- Add or Modify these styles for the Primary Button --- */
 
-/* --- Button Animations & Keyframes --- */
 .btn-primary {
+    /* Keep existing gradient as the base */
     background: linear-gradient(to right, #a855f7, #e040fb);
     color: #fff;
     box-shadow: 0 4px 15px rgba(168, 85, 247, 0.4);
-    background-size: 200% 100%;
-    animation: lightningGradient 2.5s linear infinite;
+
+    /* Make the background gradient image larger than the button */
+    background-size: 200% 100%; /* Increase width */
+
+    /* Apply the animation */
+    animation: lightningGradient 2.5s linear infinite; /* Adjust speed (2.5s) as needed */
+
+    /* Ensure other essential button styles are present */
     display: inline-block;
     padding: 0.8rem 1.8rem;
     border-radius: 50px;
     font-weight: 600;
     cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Keep hover transitions */
     border: none;
     font-size: 1rem;
     position: relative;
     z-index: 2;
 }
 
+/* Keep the existing hover effect */
 .btn-primary:hover {
+    /* The background animation continues, just enhance shadow/transform */
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(168, 85, 247, 0.6);
+    box-shadow: 0 6px 20px rgba(168, 85, 247, 0.6); /* Maybe slightly stronger shadow on hover */
 }
 
+
+/* --- Add these Keyframes anywhere in your <style> block --- */
 @keyframes lightningGradient {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+    0% {
+        background-position: 0% 50%; /* Start position */
+    }
+    50% {
+        background-position: 100% 50%; /* Move to the right */
+    }
+    100% {
+        background-position: 0% 50%; /* Return to start for smooth loop */
+    }
+}
+
+/* --- Contact Section --- */
+.contact-section {
+  padding: 60px 20px;
+  background-color: transparent; /* MODIFIED: Set to transparent */
+  color: white;
+  font-family: 'Poppins', sans-serif;
+}
+
+.contact-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.contact-info,
+.contact-form {
+  flex: 1 1 45%;
+  background-color: transparent; 
+  padding: 30px;
+  border-radius: 12px;
+  border: 2px solid var(--primary-color); 
+  animation: blink-border 2.5s linear infinite; 
+}
+
+.contact-info h2,
+.contact-form h2 {
+  margin-bottom: 15px;
+}
+
+.contact-info p {
+  margin: 8px 0;
+  line-height: 1.6;
+}
+
+.download-resume {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 10px 20px;
+  background: transparent;
+  border: 1.5px solid #a855f7;
+  border-radius: 8px;
+  color: #a855f7;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+.download-resume:hover {
+  background-color: #a855f7;
+  color: white;
+}
+
+.contact-form form {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 10px;
+  margin-bottom: 12px;
+  border-radius: 6px;
+  border: none;
+  background-color: #1e1e1e;
+  color: white;
+}
+
+.contact-form textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.contact-form button {
+  background-color: #a855f7;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.contact-form button:hover {
+  background-color: #9333ea;
 }
 
 @keyframes blink-border {
